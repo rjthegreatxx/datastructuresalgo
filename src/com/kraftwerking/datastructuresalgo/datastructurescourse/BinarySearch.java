@@ -1,4 +1,4 @@
-package com.kraftwerking.datastructuresalgo;
+package com.kraftwerking.datastructuresalgo.datastructurescourse;
 
 public class BinarySearch {
     int binarySearch(int[] arr, int low, int high, int x) {

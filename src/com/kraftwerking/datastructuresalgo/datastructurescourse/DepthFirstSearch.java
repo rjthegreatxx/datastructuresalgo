@@ -1,4 +1,4 @@
-package com.kraftwerking.datastructuresalgo;
+package com.kraftwerking.datastructuresalgo.datastructurescourse;
 
 public class DepthFirstSearch {
     TreeNode root;

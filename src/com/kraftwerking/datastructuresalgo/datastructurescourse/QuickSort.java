@@ -1,4 +1,4 @@
-package com.kraftwerking.datastructuresalgo;
+package com.kraftwerking.datastructuresalgo.datastructurescourse;
 
 public class QuickSort {
     int partition(int[] arr, int low, int high) {

@@ -1,4 +1,4 @@
-package com.kraftwerking.datastructuresalgo;
+package com.kraftwerking.datastructuresalgo.datastructurescourse;
 
 import java.util.Arrays;
 public class Array {

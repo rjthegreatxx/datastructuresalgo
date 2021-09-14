@@ -1,6 +1,5 @@
-package com.kraftwerking.datastructuresalgo;
+package com.kraftwerking.datastructuresalgo.datastructurescourse;
 
-import java.io.*;
 import java.util.*;
 
 public class GraphTraversals {

@@ -1,4 +1,4 @@
-package com.kraftwerking.datastructuresalgo;
+package com.kraftwerking.datastructuresalgo.datastructurescourse;
 
 public class LinkedList {
     Node head;
@@ -25,7 +25,8 @@ public class LinkedList {
             System.out.println(key + " found and deleted");
             return list;
         }
-        while (currentNode != null && currentNode.data != key) {previousNode = currentNode;
+        while (currentNode != null && currentNode.data != key) {
+            previousNode = currentNode;
             currentNode = currentNode.next;
         }
         if (currentNode != null) {
@@ -50,7 +51,8 @@ public class LinkedList {
         list = insert(list, 4);
         list = insert(list, 1);
         list = insert(list, 3);
-        list = insert(list, 8);printList(list);
+        list = insert(list, 8);
+        printList(list);
         deleteByKey(list, 1);
         printList(list);
     }
