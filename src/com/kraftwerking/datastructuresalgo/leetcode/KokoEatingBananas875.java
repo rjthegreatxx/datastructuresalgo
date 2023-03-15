@@ -1,8 +1,6 @@
 package com.kraftwerking.datastructuresalgo.leetcode;
 
 
-import java.util.Arrays;
-
 public class KokoEatingBananas875 {
   public int minEatingSpeed(int[] piles, int h) {
     // Initalize the left and right boundaries

@@ -1,7 +1,5 @@
 package com.kraftwerking.datastructuresalgo.gtci;
 
-import java.util.Arrays;
-
 class HappyNumber {
 
     public static int sumDigits(int number) {

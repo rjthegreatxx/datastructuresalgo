@@ -7,19 +7,26 @@ public class ProductOfArrayExceptItself238 {
 
   public int[] productExceptSelf(int[] nums) {
     int n = nums.length;
-    int[] leftproducts = new int[n];
-    int[] rightproducts = new int[n];
     int[] output = new int[n];
-    leftproducts[0] = 1;
-    rightproducts[n - 1] = 1;
-    for (int i = 1; i < n; i++) {
-      leftproducts[i] = nums[i - 1] * leftproducts[i - 1];
+    for(int i = 0;i<output.length;i++){
+      output[i] = 1;
     }
-    for (int i = n - 2; i >= 0; i--) {
-      rightproducts[i] = nums[i + 1] * rightproducts[i + 1];
+
+    int pre = 1;
+    int post = 1;
+
+    for(int i = 0;i < nums.length - 1;i++){
+     int tmp = nums[i] * pre;
+     output[i+1] = tmp;
+     pre = tmp;
     }
-    for (int i = 0; i < n; i++) {
-      output[i] = leftproducts[i] * rightproducts[i];
+
+    for(int i = nums.length - 1;i >= 0;i--){
+      System.out.println(nums[i]);
+      int tmp = output[i] * post;
+      output[i] = tmp;
+
+
     }
 
     return output;

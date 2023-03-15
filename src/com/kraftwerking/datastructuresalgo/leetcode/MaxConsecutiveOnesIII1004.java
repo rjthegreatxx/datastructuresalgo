@@ -1,8 +1,5 @@
 package com.kraftwerking.datastructuresalgo.leetcode;
 
-import java.util.HashMap;
-import java.util.Map;
-
 class MaxConsecutiveOnesIII1004 {
 
   public int longestOnes(int[] nums, int k) {
