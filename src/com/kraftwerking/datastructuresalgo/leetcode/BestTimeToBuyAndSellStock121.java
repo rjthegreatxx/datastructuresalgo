@@ -3,47 +3,31 @@ package com.kraftwerking.datastructuresalgo.leetcode;
 
 class BestTimeToBuyAndSellStock121 {
 
-  public int maxProfitAttempt1(int[] prices) {
+  public int maxProfit(int[] prices) {
     int minPrice = -1;
     int maxProfit = 0;
+    int l = 0;
+    int r = 1;
 
-    for (int i = 0; i < prices.length; i++) {
-      if (minPrice == -1) {
-        minPrice = prices[i];
-        continue;
+    while(r<prices.length){
+
+      if(prices[l] < prices[r]){
+        int profit = prices[r] - prices[l];
+        maxProfit = Math.max(maxProfit, profit);
+      } else {
+        l = r;
       }
-      if (prices[i] < minPrice) {
-        minPrice = prices[i];
-      }
-      int profit = prices[i] - minPrice;
-      if (profit > maxProfit) {
-        maxProfit = profit;
-      }
+      r++;
     }
-
 
     return maxProfit;
   }
 
-  public int maxProfit(int[] prices) {
-    int minPrice = -1;
-    int maxProfit = 0;
+  public static void main(String[] args){
+    int[] prices = {7,6,4,3,1};
+    BestTimeToBuyAndSellStock121 bestTimeToBuyAndSellStock121 = new BestTimeToBuyAndSellStock121();
+    int result = bestTimeToBuyAndSellStock121.maxProfit(prices);
+    System.out.println(result);
 
-    for (int i = 0; i < prices.length; i++) {
-      if (minPrice == -1) {
-        minPrice = prices[i];
-        continue;
-      }
-
-      if (prices[i] < minPrice) {
-        minPrice = prices[i];
-      }
-
-      int profit = prices[i] - minPrice;
-      maxProfit = Math.max(maxProfit, profit);
-
-    }
-
-    return maxProfit;
   }
 }

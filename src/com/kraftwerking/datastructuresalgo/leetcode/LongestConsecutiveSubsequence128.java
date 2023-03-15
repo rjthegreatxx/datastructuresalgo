@@ -12,14 +12,16 @@ class LongestConsecutiveSubsequence128 {
     }
     int longest = 0;
 
-    for (Integer n : nums) {
-      //check if its the start of a sequence
-      if (!numSet.contains(n - 1)) {
-        int length = 0;
-        while (numSet.contains(n + length)) {
-          length++;
+    for(int i = 0;i<nums.length;i++){
+      if(!numSet.contains(nums[i] - 1)){
+        int len = 0;
+        int curr = nums[i];
+
+        while(numSet.contains(curr)){
+          curr = curr + 1;
+          longest = Math.max(longest, ++len);
         }
-        longest = Math.max(length, longest);
+
       }
     }
 
@@ -27,7 +29,7 @@ class LongestConsecutiveSubsequence128 {
   }
 
   public static void main(String[] args) {
-    int nums[] = {100, 4, 200, 1, 3, 2};
+    int nums[] = {0,3,7,2,5,8,4,6,0,1};
     LongestConsecutiveSubsequence128 longestConsecutiveSubsequence128 = new LongestConsecutiveSubsequence128();
     int result = longestConsecutiveSubsequence128.longestConsecutive(nums);
     System.out.println(result);

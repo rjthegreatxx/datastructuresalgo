@@ -10,34 +10,34 @@ class ThreeSum15 {
     List<List<Integer>> result = new ArrayList<>();
     Arrays.sort(nums);
 
-    for (int i = 0; i < nums.length - 2; i++) {
-      if (i == 0 || (i > 0 && nums[i] != nums[i - 1])) {
-        int low = i + 1;
-        int high = nums.length - 1;
+    for(int i = 0;i<nums.length;i++){
+      if(i == 0 || i>0 && nums[i] != nums[i-1]){
+        int l = i + 1;
+        int r = nums.length - 1;
         int sum = 0 - nums[i];
 
-        //2sum solution to find match
-        while (low < high) {
-          if (nums[low] + nums[high] == sum) {
-            result.add(Arrays.asList(nums[i], nums[low], nums[high]));
-            while (low < high && nums[low] == nums[low + 1]) {
-              low++;
+        while(l<r){
+          if(nums[l] + nums[r] == sum){
+            List<Integer> newList = new ArrayList<>();
+            newList.add(nums[i]);
+            newList.add(nums[l]);
+            newList.add(nums[r]);
+            result.add(newList);
+
+            while(l < r && nums[l] == nums[l+1]){
+              l++;
             }
-            while (low < high && nums[high] == nums[high - 1]) {
-              high--;
-            }
-            low++;
-            high--;
-          } else if (nums[low] + nums[high] > sum) {
-            high--;
-          } else {
-            low++;
+            l++;
+            r--;
+          } else if (nums[l] + nums[r] < sum){
+            l++;
+          } else if (nums[l] + nums[r] > sum){
+            r--;
           }
         }
-
       }
-
     }
+
     return result;
   }
 
