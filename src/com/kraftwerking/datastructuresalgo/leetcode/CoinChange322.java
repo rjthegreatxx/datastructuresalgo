@@ -1,35 +1,27 @@
 package com.kraftwerking.datastructuresalgo.leetcode;
 
 
+import java.util.Arrays;
+
 class CoinChange322 {
 
   public int coinChange(int[] coins, int amount) {
-    if (amount < 1) {
+    if (amount < 0 || coins.length == 0 || coins == null) {
       return 0;
     }
-    return helper(coins, amount, new int[amount + 1]);
-  }
+    int[] dp = new int[amount + 1];
+    Arrays.fill(dp, amount + 1);
+    dp[0] = 0;
 
-  private int helper(int[] coins, int rem,
-      int[] count) { // rem: remaining coins after the last step; count[rem]: minimum number of coins to sum up to rem
-    if (rem < 0) {
-      return -1; // not valid
-    }
-    if (rem == 0) {
-      return 0; // completed
-    }
-    if (count[rem] != 0) {
-      return count[rem]; // already computed, so reuse
-    }
-    int min = Integer.MAX_VALUE;
-    for (int coin : coins) {
-      int res = helper(coins, rem - coin, count);
-      if (res != -1) {
-        min = Math.min(res + 1, min);
+    for (int i = 1; i <= amount; i++) {
+      for (int coin : coins) {
+        if (i - coin >= 0) {
+          dp[i] = Math.min(dp[i], 1 + dp[i - coin]);
+        }
       }
     }
-    count[rem] = (min == Integer.MAX_VALUE) ? -1 : min;
-    return count[rem];
+
+    return dp[amount] != amount + 1 ? dp[amount] : -1;
   }
 
   public static void main(String[] args) {

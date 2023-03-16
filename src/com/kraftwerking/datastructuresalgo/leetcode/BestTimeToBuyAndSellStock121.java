@@ -4,7 +4,6 @@ package com.kraftwerking.datastructuresalgo.leetcode;
 class BestTimeToBuyAndSellStock121 {
 
   public int maxProfit(int[] prices) {
-    int minPrice = -1;
     int maxProfit = 0;
     int l = 0;
     int r = 1;

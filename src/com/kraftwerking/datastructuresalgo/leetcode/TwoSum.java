@@ -10,15 +10,19 @@ class TwoSum {
     int[] res = new int[2];
 
     for(int i = 0;i<nums.length;i++){
-      int complement = target - nums[i];
-      if(numMap.containsKey(complement)) {
+      int num = nums[i];
+      int complement = target - num;
+
+      if(numMap.containsKey(complement)){
         res[0] = i;
         res[1] = numMap.get(complement);
         return res;
       } else {
-        numMap.put(nums[i],i);
+        numMap.put(num, i);
       }
+
     }
+
     return res;
   }
 

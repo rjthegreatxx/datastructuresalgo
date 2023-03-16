@@ -15,21 +15,20 @@ public class ValidAnagram242 {
     }
 
     for(char c:arr2){
-      if(characterMap.containsKey(c) && characterMap.get(c) != 0){
-        characterMap.put(c, characterMap.getOrDefault(c, 0) - 1);
-      } else if(!characterMap.containsKey(c)){
+      if(!characterMap.containsKey(c)){
         return false;
+      } else {
+        characterMap.put(c, characterMap.getOrDefault(c, 0) - 1);
       }
     }
 
     int total = 0;
-    for(int v: characterMap.values()){
-      total = total + v;
+    for(int val:characterMap.values()){
+      total = total + val;
     }
 
-    if(total > 0){
-      return false;
-    }
+    if(total > 0) return false;
+
     return true;
   }
 
