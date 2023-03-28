@@ -3,7 +3,7 @@ package com.kraftwerking.datastructuresalgo.leetcode;
 
 import java.util.HashSet;
 
-class LongestConsecutiveSubsequence128 {
+class LongestConsecutiveSequence128 {
 
   public int longestConsecutive(int[] nums) {
     HashSet<Integer> numSet = new HashSet<>();
@@ -30,7 +30,7 @@ class LongestConsecutiveSubsequence128 {
 
   public static void main(String[] args) {
     int nums[] = {0,3,7,2,5,8,4,6,0,1};
-    LongestConsecutiveSubsequence128 longestConsecutiveSubsequence128 = new LongestConsecutiveSubsequence128();
+    LongestConsecutiveSequence128 longestConsecutiveSubsequence128 = new LongestConsecutiveSequence128();
     int result = longestConsecutiveSubsequence128.longestConsecutive(nums);
     System.out.println(result);
   }
