@@ -1,8 +1,9 @@
 package com.kraftwerking.datastructuresalgo.codinggame;
 
-import java.util.*;
-import java.io.*;
-import java.math.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
 
 public class TheDescent {
     /**
