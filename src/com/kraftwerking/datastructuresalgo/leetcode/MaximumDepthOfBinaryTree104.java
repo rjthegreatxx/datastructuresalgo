@@ -4,8 +4,8 @@ package com.kraftwerking.datastructuresalgo.leetcode;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-public class InvertBinaryTree226 {
-  public TreeNode invertTree(TreeNode root) {
+public class MaximumDepthOfBinaryTree104 {
+  public int maxDepth(TreeNode root) {
     Deque<TreeNode> queue = new ArrayDeque<TreeNode>();
     if (root != null) {
       queue.add(root);
@@ -21,25 +21,19 @@ public class InvertBinaryTree226 {
         if(curr.right != null) {
           queue.add(curr.right);
         }
-
         if(curr.left != null) {
           queue.add(curr.left);
         }
-
-        TreeNode tmp = curr.left;
-        curr.left = curr.right;
-        curr.right = tmp;
-
       }
       level++;
       System.out.println();
     }
-    return root;
+    return level;
 
   }
 
   public static void main(String[] args) {
-    InvertBinaryTree226 invertBinaryTree226 = new InvertBinaryTree226();
+    MaximumDepthOfBinaryTree104 maximumDepthOfBinaryTree104 = new MaximumDepthOfBinaryTree104();
 
   }
 }

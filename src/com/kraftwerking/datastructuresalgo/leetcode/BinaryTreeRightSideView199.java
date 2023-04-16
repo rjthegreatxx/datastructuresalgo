@@ -37,6 +37,8 @@ public class BinaryTreeRightSideView199 {
 
             for(int i = 0;i < levelLen;i++){
                 TreeNode curr = queue.removeFirst();
+                System.out.print(curr.val + " ");
+
                 if(curr.left != null){
                     currList.add(curr.left.val);
                     queue.add(curr.left);
@@ -48,6 +50,8 @@ public class BinaryTreeRightSideView199 {
             }
             if(!currList.isEmpty()) res.add(currList.get(currList.size() - 1));
             level++;
+            System.out.println();
+
 
         }
         return res;

@@ -27,20 +27,20 @@ public class BinaryTreeInorderTraversal94 {
     return res;
   }
 
-//  private List<Integer> result = new ArrayList<>();
-//
-//  public List<Integer> inorderTraversal(TreeNode root) {
-//    inorder(root);
-//    return result;
-//  }
-//
-//  public void inorder(TreeNode root) {
-//    if (root == null) {
-//      return;
-//    }
-//    inorder(root.left);
-//    result.add(root.val);
-//    inorder(root.right);
-//  }
+  private List<Integer> result = new ArrayList<>();
+
+  public List<Integer> inorderTraversal2(TreeNode root) {
+    inorder(root);
+    return result;
+  }
+
+  public void inorder(TreeNode root) {
+    if (root == null) {
+      return;
+    }
+    inorder(root.left);
+    result.add(root.val);
+    inorder(root.right);
+  }
 
 }
