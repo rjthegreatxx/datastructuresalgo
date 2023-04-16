@@ -11,16 +11,15 @@ class TwoSum {
 
     for(int i = 0;i<nums.length;i++){
       int num = nums[i];
-      int complement = target - num;
+      int compliment = target - num;
 
-      if(numMap.containsKey(complement)){
+      if(numMap.containsKey(compliment)){
         res[0] = i;
-        res[1] = numMap.get(complement);
+        res[1] = numMap.get(compliment);
         return res;
       } else {
         numMap.put(num, i);
       }
-
     }
 
     return res;

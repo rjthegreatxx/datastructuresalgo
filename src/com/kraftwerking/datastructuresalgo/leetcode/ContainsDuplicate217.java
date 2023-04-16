@@ -8,12 +8,15 @@ public class ContainsDuplicate217 {
 
   public boolean containsDuplicate(int[] nums) {
     if (nums.length == 0) return false;
-
-    Set<Integer> set = new HashSet<>();
-    for(int i = 0;i< nums.length;i++){
-        if(set.contains(nums[i])) return true;
-        set.add(nums[i]);
+    Set<Integer> ints = new HashSet<>();
+    for(int i = 0;i<nums.length;i++){
+      if(!ints.contains(nums[i])){
+        ints.add(nums[i]);
+      } else {
+        return true;
+      }
     }
+
     return false;
   }
 

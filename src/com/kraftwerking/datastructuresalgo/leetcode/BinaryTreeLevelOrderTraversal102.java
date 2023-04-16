@@ -28,21 +28,21 @@ public class BinaryTreeLevelOrderTraversal102 {
         if (root != null) {
             queue.add(root);
         }
+
         int level = 0;
-        while(!queue.isEmpty()) {
-            System.out.print("level " + level + ": ");
+        while(!queue.isEmpty()){
+            System.out.println("level " + level + ":");
             int levelLength = queue.size();
             List<Integer> currList = new ArrayList<>();
-            for (int i = 0; i < levelLength; i++) {
-                TreeNode curr = queue.removeFirst();
-                System.out.print(curr.val + " ");
-                currList.add(curr.val);
 
-                if(curr.left != null) {
-                    queue.add(curr.left);
+            for(int i = 0;i< levelLength;i++){
+                TreeNode current = queue.removeFirst();
+                currList.add(current.val);
+                if(current.left != null){
+                    queue.add(current.left);
                 }
-                if(curr.right != null) {
-                    queue.add(curr.right);
+                if(current.right != null){
+                    queue.add(current.right);
                 }
             }
             res.add(currList);

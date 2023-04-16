@@ -30,25 +30,25 @@ public class BinaryTreeRightSideView199 {
             res.add(root.val);
         }
         int level = 0;
-        while(!queue.isEmpty()) {
+        while(!queue.isEmpty()){
+            int levelLen = queue.size();
+            System.out.println("level " + level + ":");
             List<Integer> currList = new ArrayList<>();
-            System.out.print("level " + level + ": ");
-            int levelLength = queue.size();
-            for (int i = 0; i < levelLength; i++) {
+
+            for(int i = 0;i < levelLen;i++){
                 TreeNode curr = queue.removeFirst();
-                System.out.print(curr.val + " ");
-                if(curr.left != null) {
-                    queue.add(curr.left);
+                if(curr.left != null){
                     currList.add(curr.left.val);
+                    queue.add(curr.left);
                 }
-                if(curr.right != null) {
-                    queue.add(curr.right);
+                if(curr.right != null){
                     currList.add(curr.right.val);
+                    queue.add(curr.right);
                 }
             }
+            if(!currList.isEmpty()) res.add(currList.get(currList.size() - 1));
             level++;
-            if(currList.size() > 0) res.add(currList.get(currList.size() - 1));
-            System.out.println();
+
         }
         return res;
     }

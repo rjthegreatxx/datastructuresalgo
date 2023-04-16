@@ -5,14 +5,13 @@ public class ConcatenationOfArray1929 {
 
   public int[] getConcatenation(int[] nums) {
     int capacity = 2 * nums.length;
-    int[] newArr = new int[capacity];
+    int[] newArray = new int[capacity];
 
-    for(int i = 0;i< nums.length;i++){
-      newArr[i] = nums[i];
-      newArr[i + nums.length] = nums[i];
+    for(int i = 0;i<nums.length;i++){
+      newArray[i] = nums[i];
+      newArray[i + nums.length] = nums[i];
     }
-    return newArr;
-
+    return newArray;
   }
 
   public static void main(String[] args) {

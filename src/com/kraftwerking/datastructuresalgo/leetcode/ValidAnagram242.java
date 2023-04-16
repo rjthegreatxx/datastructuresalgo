@@ -18,7 +18,7 @@ public class ValidAnagram242 {
       if(!characterMap.containsKey(c)){
         return false;
       } else {
-        characterMap.put(c, characterMap.getOrDefault(c, 0) - 1);
+        characterMap.put(c, characterMap.getOrDefault(c, 0) + 1);
       }
     }
 
