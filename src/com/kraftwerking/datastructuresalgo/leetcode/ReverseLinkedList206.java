@@ -5,13 +5,13 @@ class ReverseLinkedList206 {
   public ListNode reverseList(ListNode head) {
     ListNode curr = head;
     ListNode prev = null;
-    while (curr != null) {
-      ListNode tmp = curr.next;
+
+    while(curr != null){
+      ListNode tmp  = curr.next;
       curr.next = prev;
-      prev = tmp;
-
+      prev = curr;
+      curr = tmp;
     }
-
     return prev;
   }
 
