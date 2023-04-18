@@ -6,26 +6,30 @@ import java.util.*;
 class GroupAnagrams49 {
 
   public List<List<String>> groupAnagrams(String[] strs) {
-    Map<String, List<String>> mapOfStrLists = new HashMap<>();
+    List<List<String>> res = new ArrayList<>();
+    Map<String, List<String>> anMap = new HashMap<>();
 
-    for(int i = 0;i<strs.length;i++){
-      String str = strs[i];
-      char[] chars = str.toCharArray();
-      Arrays.sort(chars);
-      String sortedStr = String.valueOf(chars);
+    for(String s: strs){
+      char[] arr = s.toCharArray();
+      Arrays.sort(arr);
+      String sortedStr = new String(arr);
 
-      if(mapOfStrLists.containsKey(sortedStr)){
-        List<String > newList = mapOfStrLists.get(sortedStr);
-        newList.add(str);
-        mapOfStrLists.put(sortedStr, newList);
+      if(anMap.containsKey(sortedStr)){
+        List<String> newList = anMap.get(sortedStr);
+        newList.add(s);
+        anMap.put(sortedStr,newList);
+
       } else {
         List<String> newList = new ArrayList<>();
-        newList.add(str);
-        mapOfStrLists.put(sortedStr, newList);
+        newList.add(s);
+        anMap.put(sortedStr, newList);
       }
     }
 
-    List<List<String>> res = new ArrayList<>(mapOfStrLists.values());
+    for(Map.Entry<String, List<String >> entry: anMap.entrySet()) {
+      res.add(entry.getValue());
+    }
+
     return res;
   }
 
