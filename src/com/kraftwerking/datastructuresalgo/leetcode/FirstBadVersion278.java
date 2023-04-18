@@ -7,20 +7,23 @@ public class FirstBadVersion278 {
     int low = 1;
     int high = n;
 
-    while (low < high) {
-      mid = low + (high - low) / 2;
+    while(low<=high){
+      mid = low + (high-low)/2;
 
-      if (isBadVersion(mid) == false) {
+      if(isBadVersion(mid) == false){
         low = mid + 1;
-      } else if (isBadVersion(mid) == true) {
-        high = mid;
+
+      }else if(isBadVersion(mid) == true){
+        high = mid - 1;
+
       }
     }
     return low;
+
   }
 
   private boolean isBadVersion(int n) {
-    if(n == 4) return true;
+    if(n >= 4) return true;
     return false;
   }
 

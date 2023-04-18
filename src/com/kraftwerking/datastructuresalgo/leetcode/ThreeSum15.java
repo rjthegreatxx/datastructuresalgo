@@ -2,43 +2,46 @@ package com.kraftwerking.datastructuresalgo.leetcode;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
-
 class ThreeSum15 {
 
+  //2 pointers
   public List<List<Integer>> threeSum(int[] nums) {
-    List<List<Integer>> result = new ArrayList<>();
     Arrays.sort(nums);
+    LinkedList<List<Integer>> sol = new LinkedList<List<Integer>>();
 
-    for(int i = 0;i<nums.length;i++){
-      if(i == 0 || i>0 && nums[i] != nums[i-1]){
-        int l = i + 1;
-        int r = nums.length - 1;
-        int sum = 0 - nums[i];
+    for (int i = 0; i < nums.length - 2; i++) {
+      if (i == 0 || (i > 0 && nums[i] != nums[i - 1])) {
+        int target = 0 - nums[i];
+        int left = i + 1;
+        int right = nums.length - 1;
 
-        while(l<r){
-          if(nums[l] + nums[r] == sum){
-            List<Integer> newList = new ArrayList<>();
-            newList.add(nums[i]);
-            newList.add(nums[l]);
-            newList.add(nums[r]);
-            result.add(newList);
-
-            while(l < r && nums[l] == nums[l+1]){
-              l++;
+        while (left < right) {
+          if (nums[left] + nums[right] == target) {
+            ArrayList<Integer> miniSol = new ArrayList<>();
+            miniSol.add(nums[i]);
+            miniSol.add(nums[left]);
+            miniSol.add(nums[right]);
+            sol.add(miniSol);
+            while (left < right && nums[left] == nums[left + 1]) {
+              left++;
             }
-            l++;
-            r--;
-          } else if (nums[l] + nums[r] < sum){
-            l++;
-          } else if (nums[l] + nums[r] > sum){
-            r--;
+            while (left < right && nums[right] == nums[right - 1]) {
+              right--;
+            }
+            left++;
+            right--;
+          } else if (nums[left] + nums[right] > target) {
+            right--;
+          } else {
+            left++;
           }
         }
       }
     }
 
-    return result;
+    return sol;
   }
 
   public static void main(String[] args) {
@@ -47,4 +50,5 @@ class ThreeSum15 {
     List<List<Integer>> result = threeSum15.threeSum(nums);
     System.out.println(result);
   }
+
 }
