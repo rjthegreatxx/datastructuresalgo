@@ -3,18 +3,19 @@ package com.kraftwerking.datastructuresalgo.leetcode;
 
 public class ValidPalindrom125 {
   public boolean isPalindrome(String s) {
-    s = s.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
-    int l = 0;
-    int r = s.length() - 1;
+    s = s.replaceAll(
+            "[^a-zA-Z0-9]", "");
+    s = s.toLowerCase();
 
-    while(l<=r){
-      if(s.charAt(l) == s.charAt(r)){
-        l++;
-        r--;
-      } else {
-        return false;
-      }
+    int start = 0;
+    int end = s.length() - 1;
+
+    while(start <= end){
+      if(s.charAt(start) != s.charAt(end)) return false;
+      start++;
+      end--;
     }
+
     return true;
   }
 
