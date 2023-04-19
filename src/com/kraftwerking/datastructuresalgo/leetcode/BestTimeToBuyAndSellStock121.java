@@ -9,12 +9,11 @@ class BestTimeToBuyAndSellStock121 {
     int r = 1;
 
     while(r<prices.length){
-
-      if(prices[l] < prices[r]){
-        int profit = prices[r] - prices[l];
-        maxProfit = Math.max(maxProfit, profit);
-      } else {
+      if(prices[r] < prices[l]){
         l = r;
+      } else {
+        int cur = prices[r] - prices[l];
+        maxProfit = Math.max(cur,maxProfit);
       }
       r++;
     }
@@ -23,7 +22,7 @@ class BestTimeToBuyAndSellStock121 {
   }
 
   public static void main(String[] args){
-    int[] prices = {7,6,4,3,1};
+    int[] prices = {2,1,4};
     BestTimeToBuyAndSellStock121 bestTimeToBuyAndSellStock121 = new BestTimeToBuyAndSellStock121();
     int result = bestTimeToBuyAndSellStock121.maxProfit(prices);
     System.out.println(result);

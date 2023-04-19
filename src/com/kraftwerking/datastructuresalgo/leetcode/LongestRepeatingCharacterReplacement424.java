@@ -6,24 +6,21 @@ import java.util.Map;
 class LongestRepeatingCharacterReplacement424 {
 
   public int characterReplacement(String s, int k) {
-    Map<Character, Integer> count = new HashMap<>();
-    int res = 0;
-    int l = 0;
-    int maxVal = 0;
-
-    for(int r = 0;r<s.length();r++){
-      count.put(s.charAt(r), count.getOrDefault(s.charAt(r), 0) + 1);
-      maxVal = Math.max(maxVal,count.get(s.charAt(r)));
-
-      while((r - l + 1 - maxVal) > k){
-        count.put(s.charAt(l), count.get(s.charAt(l)) - 1);
-        l++;
+    int[] arr = new int[26];
+    int ans = 0;
+    int max = 0;
+    int i = 0;
+    for (int j = 0; j < s.length(); j++) {
+      arr[s.charAt(j) - 'A']++;
+      max = Math.max(max, arr[s.charAt(j) - 'A']);
+      if (j - i + 1 - max > k) {
+        arr[s.charAt(i) - 'A']--;
+        i++;
       }
-      res = Math.max(res, r - l + 1);
-
+      ans = Math.max(ans, j - i + 1);
     }
-    return res;
-    }
+    return ans;
+  }
 
   public static void main(String[] args) {
     LongestRepeatingCharacterReplacement424 longestRepeatingCharacterReplacement424 = new LongestRepeatingCharacterReplacement424();
