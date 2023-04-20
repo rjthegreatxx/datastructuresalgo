@@ -16,25 +16,25 @@ public class ValidParentheses20 {
     closeToOpen.put(")","(");
 
     char[] chars = s.toCharArray();
-
-    for (int i = 0; i < s.length(); i++) {
-      if(!stack.isEmpty() && closeToOpen.containsKey(String.valueOf(chars[i]))){
-        if(String.valueOf(stack.get(stack.size()-1)).equals(closeToOpen.get(String.valueOf(chars[i])))){
-          stack.remove(stack.size()-1);
-        } else {
-          return false;
-        }
+    if(chars.length == 1) return false;
+    for(int i = 0;i< chars.length;i++){
+      char c = chars[i];
+      if(closeToOpen.containsKey(String.valueOf(c))){
+        String open = closeToOpen.get(String.valueOf(c));
+        String fromStack = String.valueOf(stack.remove(stack.size() - 1));
+        if(!open.equals(fromStack)) return false;
       } else {
-        stack.add(chars[i]);
+        if(!closeToOpen.keySet().contains(c)) return false;
+        stack.add(c);
       }
     }
 
-    return stack.isEmpty();
+    return true;
   }
 
   public static void main(String[] args) {
     ValidParentheses20 validParentheses20 = new ValidParentheses20();
-    boolean result = validParentheses20.isValid("()");
+    boolean result = validParentheses20.isValid("((");
     System.out.println(result);
 
   }

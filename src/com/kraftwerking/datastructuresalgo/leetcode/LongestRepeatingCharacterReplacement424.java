@@ -1,8 +1,5 @@
 package com.kraftwerking.datastructuresalgo.leetcode;
 
-import java.util.HashMap;
-import java.util.Map;
-
 class LongestRepeatingCharacterReplacement424 {
 
   public int characterReplacement(String s, int k) {
