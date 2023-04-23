@@ -7,6 +7,7 @@ class ReverseLinkedList206 {
     ListNode prev = null;
 
     while(curr != null){
+      System.out.println(curr.val);
       ListNode tmp = curr.next;
       curr.next = prev;
       prev = curr;
@@ -15,7 +16,6 @@ class ReverseLinkedList206 {
 
     return prev;
   }
-
   public static void main(String[] args) {
     ReverseLinkedList206 reverseLinkedList206 = new ReverseLinkedList206();
   }
