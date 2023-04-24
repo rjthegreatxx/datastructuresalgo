@@ -1,37 +1,48 @@
 package com.kraftwerking.datastructuresalgo.leetcode;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class ReorderList143 {
 
   public void reorderList(ListNode head) {
     ListNode cur = head;
-    ListNode l = head;
-    ListNode r;
-    int c = 1;
+    List<ListNode> nodeList = new ArrayList<>();
 
-    while(cur.next != null){
-      cur = cur.next;
-      c++;
+    ListNode slow = head;
+    ListNode fast = head.next;
+
+    //find mid of list
+    while(slow != null && slow.next != null && fast != null && fast.next != null){
+      slow = slow.next;
+      fast = fast.next.next;
     }
 
-    System.out.println(cur.val);
-    System.out.println(c);
-    r = cur;
+    //System.out.println(slow.val);
 
+    //reorder second half of list
+    ListNode second = slow.next;
+    ListNode prev = null;
+    slow.next = null;
+    while(second != null){
+      ListNode tmp = second.next;
+      second.next = prev;
+      prev = second;
+      second = tmp;
+    }
+
+    //merge the two halfs
+    ListNode first = head;
+    second = prev;
+    while(second != null){
+      ListNode tmp1 = first.next;
+      ListNode tmp2 = second.next;
+      first.next = second;
+      second.next = tmp1;
+      first = tmp1;
+      second = tmp2;
+    }
 
   }
-
-  public static void main(String[] args){
-    //
-    int[] nums = {1,2,3,4,5,6,7};
-
-    int l = 0;
-    int r = nums.length-1;
-    while(l<=r){
-      System.out.println(nums[l]);
-      System.out.println(nums[r]);
-      l++;
-      r--;
-  }
-}
 }
 
