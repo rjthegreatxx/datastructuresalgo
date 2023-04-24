@@ -49,8 +49,6 @@ class DesignBrowserHistory1472 {
         steps--;
       }
       return cur.url;
-
-
     }
 
     public String forward(int steps) {
@@ -60,7 +58,7 @@ class DesignBrowserHistory1472 {
         steps--;
       }
 
-      System.out.println(cur.url);
+      //System.out.println(cur.url);
       return cur.url;
     }
   }
