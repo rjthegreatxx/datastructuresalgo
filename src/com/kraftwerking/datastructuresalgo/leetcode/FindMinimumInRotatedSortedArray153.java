@@ -8,15 +8,15 @@ public class FindMinimumInRotatedSortedArray153 {
     int mid;
 
     while(L<R){
-      mid = (L + R)/2;
-      if(nums[mid] < nums[R] ){
+      mid = (L + R) / 2;
+      if(nums[mid] < nums[R]){
         R = mid;
-      } else{
+      } else {
         L = mid + 1;
       }
     }
-    return nums[L];
 
+    return nums[L];
   }
 
   public static void main(String[] args) {
