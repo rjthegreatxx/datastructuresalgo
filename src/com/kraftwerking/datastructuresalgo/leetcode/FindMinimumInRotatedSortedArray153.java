@@ -12,7 +12,7 @@ public class FindMinimumInRotatedSortedArray153 {
       if(nums[mid] < nums[R]){
         R = mid;
       } else {
-        L = mid + 1;
+        L = mid + 1; //we found pivot point
       }
     }
 
