@@ -7,13 +7,13 @@ public class SearchInABinarySearchTree700 {
       return null;
     }
 
-    if(val > root.val){
-      return searchBST(root.right, val);
-    } else if(val < root.val){
-      return searchBST(root.left, val);
-    } else {
-      return root;
+    if(val < root.val){
+      root = searchBST(root.left, val);
+    } else if(val > root.val){
+      root = searchBST(root.right, val);
     }
+    return root;
+
   }
 
   public static void main(String[] args) {

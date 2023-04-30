@@ -7,14 +7,13 @@ import java.util.Stack;
 public class KthSmallestElementInABST230 {
 
   public int kthSmallest(TreeNode root, int k) {
-    //iterative
     List<Integer> res = new ArrayList<>();
     if(root == null) return -1;
 
     java.util.Stack<TreeNode> stack = new Stack<>();
     TreeNode node = root;
-    while(!stack.isEmpty() || node != null) {
-      if(node != null) {
+    while(!stack.isEmpty() || node != null){
+      if(node != null){
         stack.push(node);
         node = node.left;
       } else {
@@ -22,8 +21,10 @@ public class KthSmallestElementInABST230 {
         res.add(node.val);
         node = node.right;
       }
+
     }
 
+    System.out.println(res);
     return res.get(k-1);
   }
 

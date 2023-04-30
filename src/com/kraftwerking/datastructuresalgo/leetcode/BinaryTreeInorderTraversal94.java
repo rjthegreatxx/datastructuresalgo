@@ -13,8 +13,8 @@ public class BinaryTreeInorderTraversal94 {
 
     Stack<TreeNode> stack = new Stack<>();
     TreeNode node = root;
-    while(!stack.isEmpty() || node != null) {
-      if(node != null) {
+    while(!stack.isEmpty() || node != null){
+      if(node != null){
         stack.push(node);
         node = node.left;
       } else {
@@ -22,25 +22,28 @@ public class BinaryTreeInorderTraversal94 {
         res.add(node.val);
         node = node.right;
       }
-    }
 
+    }
     return res;
   }
 
-  private List<Integer> result = new ArrayList<>();
+  List<Integer> res = new ArrayList<>();
 
   public List<Integer> inorderTraversal2(TreeNode root) {
-    inorder(root);
-    return result;
+    root = inOrder(root);
+    return res;
   }
 
-  public void inorder(TreeNode root) {
-    if (root == null) {
-      return;
+  TreeNode inOrder(TreeNode root){
+    if(root == null) {
+      return null;
     }
-    inorder(root.left);
-    result.add(root.val);
-    inorder(root.right);
+
+    inOrder(root.left);
+    //System.out.println(root.val);
+    res.add(root.val);
+    inOrder(root.right);
+    return root;
   }
 
 }
