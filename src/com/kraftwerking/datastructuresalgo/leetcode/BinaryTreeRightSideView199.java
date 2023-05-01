@@ -25,35 +25,34 @@ public class BinaryTreeRightSideView199 {
     public List<Integer> rightSideView(TreeNode root) {
         List<Integer> res = new ArrayList<>();
         Deque<TreeNode> queue = new ArrayDeque<TreeNode>();
-        if (root != null) {
-            queue.add(root);
-            res.add(root.val);
+        if (root == null) {
+            return new ArrayList<>();
         }
+
+        queue.add(root);
         int level = 0;
         while(!queue.isEmpty()){
-            int levelLen = queue.size();
-            System.out.println("level " + level + ":");
-            List<Integer> currList = new ArrayList<>();
+            int queueSz = queue.size();
+            System.out.println("processing level " + level);
+            List<Integer> tmpList = new ArrayList<>();
 
-            for(int i = 0;i < levelLen;i++){
-                TreeNode curr = queue.removeFirst();
-                System.out.print(curr.val + " ");
-
-                if(curr.left != null){
-                    currList.add(curr.left.val);
-                    queue.add(curr.left);
+            for(int i = 0;i<queueSz;i++){
+                TreeNode cur = queue.removeFirst();
+                System.out.println(cur.val);
+                tmpList.add(cur.val);
+                if(cur.left != null){
+                    queue.add(cur.left);
                 }
-                if(curr.right != null){
-                    currList.add(curr.right.val);
-                    queue.add(curr.right);
+                if(cur.right != null){
+                    queue.add(cur.right);
                 }
             }
-            if(!currList.isEmpty()) res.add(currList.get(currList.size() - 1));
+            System.out.println(tmpList);
+            res.add(tmpList.get(tmpList.size()-1));
+
             level++;
-            System.out.println();
-
-
         }
+
         return res;
     }
 }
