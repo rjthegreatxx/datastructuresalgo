@@ -7,7 +7,7 @@ class Solution(object):
         pac, atl = set(), set()
 
         def dfs(r, c, visit, prevHeight):
-            if((r, c) in visit or
+            if ((r, c) in visit or
                r < 0 or c < 0 or r == ROWS or c == COLS or
                heights[r][c] < prevHeight):
                 return
@@ -28,7 +28,7 @@ class Solution(object):
         res = []
         for r in range(ROWS):
             for c in range(COLS):
-                if((r, c) in pac and (r, c) in atl):
+                if ((r, c) in pac and (r, c) in atl):
                     res.append([r, c])
 
         return res
