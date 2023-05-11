@@ -17,5 +17,6 @@ class ListNode:
             if slow == slow2:
                 return slow
 
+
 if __name__ == "__main__":
     main()
