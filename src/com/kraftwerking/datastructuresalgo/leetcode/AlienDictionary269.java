@@ -46,7 +46,7 @@ class AlienDictionary269 {
 
     }
 
-    Queue<Character> q = new LinkedList<Character>();
+    LinkedList<Character> q = new LinkedList<Character>();
     for (char c : degree.keySet()) {
       if (degree.get(c) == 0) {
         q.add(c);
