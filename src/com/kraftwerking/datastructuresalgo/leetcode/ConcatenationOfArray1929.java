@@ -7,7 +7,7 @@ public class ConcatenationOfArray1929 {
     int capacity = 2 * nums.length;
     int[] newArray = new int[capacity];
 
-    for(int i = 0;i<nums.length;i++){
+    for(int i = 0;i < nums.length;i++){
       newArray[i] = nums[i];
       newArray[i + nums.length] = nums[i];
     }
