@@ -2,30 +2,25 @@ package com.kraftwerking.datastructuresalgo.leetcode;
 
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Stack;
+import java.util.Map;
 
 public class ValidParentheses202 {
     public boolean isValid(String s) {
-        if (s.length() % 2 != 0) return false;
-        List<Character> stack = new ArrayList<>();
+        ArrayList<String> stack = new ArrayList<>();
+        Map<String, String> closeToOpen = new HashMap<String, String>() {{
+            put(")", "(");
+            put("]", "]");
+            put("}", "{");
+        }};
 
-        for (int i = 0; i < s.length(); i++) {
-            if (stack.isEmpty() && (s.charAt(i) == ')' || s.charAt(i) == '}' || s.charAt(i) == ']')) {
-                return false;
-            } else {
-                if (!stack.isEmpty()) {
-                    if (stack.get(stack.size()-1) == '(' && s.charAt(i) == ')') {
-                        stack.remove(stack.size()-1);
-                    } else if (stack.get(stack.size()-1) == '{' && s.charAt(i) == '}') {
-                        stack.remove(stack.size()-1);
-                    } else if (stack.get(stack.size()-1) == '[' && s.charAt(i) == ']') {
-                        stack.remove(stack.size()-1);
-                    } else stack.add(s.charAt(i));
-                } else stack.add(s.charAt(i));
-            }
+        for (char ch : s.toCharArray()) {
+            if(closeToOpen.containsKey(String.valueOf(ch))
+
         }
-        return stack.isEmpty();
+
+        return false;
     }
 
     public static void main(String[] args) {
