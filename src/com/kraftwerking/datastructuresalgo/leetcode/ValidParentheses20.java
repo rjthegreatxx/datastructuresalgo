@@ -28,7 +28,7 @@ public class ValidParentheses20 {
 
   public static void main(String[] args) {
     ValidParentheses20 validParentheses20 = new ValidParentheses20();
-    boolean result = validParentheses20.isValid("((");
+    boolean result = validParentheses20.isValid("[]");
     System.out.println(result);
 
   }
