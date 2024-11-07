@@ -15,6 +15,7 @@ class ReverseLinkedList2062 {
     return prev;
   }
 
+  
   public static void main(String[] args) {
     ReverseLinkedList2062 reverseLinkedList206 = new ReverseLinkedList2062();
   }
