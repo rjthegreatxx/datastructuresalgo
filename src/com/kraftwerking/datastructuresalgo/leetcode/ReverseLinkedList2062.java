@@ -6,16 +6,18 @@ class ReverseLinkedList2062 {
     ListNode curr = head;
     ListNode prev = null;
 
-    while(curr != null){
-      ListNode tmp = curr.next;
-      curr.next = prev;
-      prev = curr;
-      curr = tmp;
+    while (curr != null) {
+        ListNode tmp = curr.next;
+        curr.next = prev;
+        prev = curr;
+        curr = tmp;
     }
-    return prev;
-  }
 
-  
+    return prev;
+    
+}
+
+
   public static void main(String[] args) {
     ReverseLinkedList2062 reverseLinkedList206 = new ReverseLinkedList2062();
   }
