@@ -1,40 +1,25 @@
 package com.kraftwerking.datastructuresalgo.leetcode;
 
 
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.HashMap;
+import java.util.Map;
 
 public class NumberOfStudentsUnableToEatLunch17002 {
-  public int countStudents(int[] students, int[] sandwiches) {
-    Deque<Integer> studentsQueue = new ArrayDeque<>();
-    Deque<Integer>  sandwichesQueue = new ArrayDeque<>();
+    public int countStudents(int[] students, int[] sandwiches) {
+        int res = students.length;
+        Map<Integer, Integer> cnt = new HashMap<>();
+        for (Integer student : students) {
+            cnt.put(student, cnt.getOrDefault(student, 0) + 1);
+        }
 
-    for(int i = 0; i < students.length; i++) studentsQueue.add(students[i]);
-    for(int i = 0; i < sandwiches.length; i++) sandwichesQueue.add(sandwiches[i]);
-
-    int count = 0;
-    while (!studentsQueue.isEmpty() && count != studentsQueue.size()) {
-      int student = studentsQueue.peek();
-      if(student == 1 && sandwichesQueue.peek() != null && sandwichesQueue.peek() == 1){
-        studentsQueue.removeFirst();
-        sandwichesQueue.removeFirst();
-        count++;
-      } else if(student == 0 && sandwichesQueue.peek() != null && sandwichesQueue.peek() == 0){
-        studentsQueue.removeFirst();
-        sandwichesQueue.removeFirst();
-        count++;
-      } else if(student == 1 && sandwichesQueue.peek() != null && sandwichesQueue.peek() == 0){
-        int stu = studentsQueue.removeFirst();
-        studentsQueue.add(stu);
-        count++;
-      }  else if(student == 0 && sandwichesQueue.peek() != null && sandwichesQueue.peek() == 1){
-        int stu = studentsQueue.removeFirst();
-        studentsQueue.add(stu);
-        count++;
-      }
-
+        for (int s : sandwiches) {
+            if (cnt.getOrDefault(s, 0) > 0) {
+                res -= 1;
+                cnt.put(s, cnt.get(s) - 1);
+            } else {
+                return res;
+            }
+        }
+        return res;
     }
-
-    return studentsQueue.size();
-  }
 }
