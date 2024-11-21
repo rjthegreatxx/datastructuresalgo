@@ -6,6 +6,7 @@ class ReverseLinkedList2062 {
     ListNode curr = head;
     ListNode prev = null;
 
+  
     while (curr != null) {
         ListNode tmp = curr.next;
         curr.next = prev;
@@ -13,8 +14,8 @@ class ReverseLinkedList2062 {
         curr = tmp;
     }
 
-    return prev;
     
+    return prev;
 }
 
 
