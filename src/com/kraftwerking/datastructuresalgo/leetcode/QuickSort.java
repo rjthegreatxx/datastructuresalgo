@@ -2,35 +2,33 @@ package com.kraftwerking.datastructuresalgo.leetcode;
 
 public class QuickSort {
   public static int[] quickSort(int[] arr, int s, int e) {
-    if (e - s + 1 <= 1) {
-      return arr;
-    }
-
-    int pivot = arr[e];
-    int left = s;       // pointer for left side
-
-    // Partition: elements smaller than pivot on left side
-    for (int i = s; i < e; i++) {
-      if (arr[i] < pivot) {
-        int tmp = arr[left];
-        arr[left] = arr[i];
-        arr[i] = tmp;
-        left++;
+      if (e - s + 1 <= 1) {
+          return arr;
       }
-    }
 
-    // Move pivot in-between left & right sides
-    arr[e] = arr[left];
-    arr[left] = pivot;
+      int pivot = arr[e];
+      int left = s;       // pointer for left side
 
-    // Quick sort left side
-    quickSort(arr, s, left - 1);
+      // Partition: elements smaller than pivot on left side
+      for (int i = s; i < e; i++) {
+          if (arr[i] < pivot) {
+              int tmp = arr[left];
+              arr[left] = arr[i];
+              arr[i] = tmp;
+              left++;
+          }
+      }
 
-    // Quick sort right side
-    quickSort(arr, left + 1, e);
+      // Move pivot in-between left & right sides
+      arr[e] = arr[left];
+      arr[left] = pivot;
 
-    return arr;
+      // Quick sort left side
+      quickSort(arr, s, left - 1);
+
+      // Quick sort right side
+      quickSort(arr, left + 1, e);
+
+      return arr;
   }
 }
-
-
