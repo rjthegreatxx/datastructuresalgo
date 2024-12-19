@@ -9,24 +9,33 @@ class TwoSum {
     Map<Integer, Integer> numMap = new HashMap<>();
     int[] res = new int[2];
 
-    for(int i = 0;i<nums.length;i++){
+    for (int i = 0; i < nums.length; i++) {
       int num = nums[i];
       int compliment = target - num;
-
-      if(numMap.containsKey(compliment)){
+      if (numMap.containsValue(compliment)) {
+        Integer key = getKeyByValue(numMap, compliment);
         res[0] = i;
-        res[1] = numMap.get(compliment);
+        res[1] = key.intValue();
         return res;
       } else {
-        numMap.put(num, i);
+        numMap.put(i, num);
       }
     }
 
     return res;
   }
 
-  public static void main(String[] args){
-    int[] nums = {2,7,11,15};
+  public static <K, V> K getKeyByValue(Map<K, V> map, V value) {
+    for (Map.Entry<K, V> entry : map.entrySet()) {
+      if (entry.getValue().equals(value)) {
+        return entry.getKey();
+      }
+    }
+    return null;
+  }
+
+  public static void main(String[] args) {
+    int[] nums = { 2, 7, 11, 15 };
     TwoSum twoSum = new TwoSum();
     int[] result = twoSum.twoSum(nums, 9);
 
