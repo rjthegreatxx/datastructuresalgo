@@ -19,6 +19,7 @@ public class ProductOfArrayExceptItself2382 {
       output[i] = output[i] * r;
       r = r * nums[i];
     }
+    
 
     return output;
   }
