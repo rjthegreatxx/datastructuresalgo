@@ -13,14 +13,15 @@ class LongestConsecutiveSequence128 {
     int longest = 0;
 
     for(int i = 0;i<nums.length;i++){
-      if(!numSet.contains(nums[i] - 1)){ //start of new sequence, dont want to check this for every iteration
+      if(!numSet.contains(nums[i] - 1)){ // start of a new sequence
         int len = 0;
-        int cur = nums[i];
+        int curr = nums[i];
 
-        while(numSet.contains(cur)){
+        while(numSet.contains(nums[i])){
           len++;
-          cur++;
+          curr++;
           longest = Math.max(longest, len);
+
         }
 
       }
