@@ -9,11 +9,11 @@ class BestTimeToBuyAndSellStock121 {
     int r = 1;
 
     while (r < prices.length) {
-      if(prices[r] < prices[l]){
-        l = r;
+      if (prices[l] < prices[r]) {
+        int profit = prices[r] - prices[l];
+        maxProfit = Math.max(maxProfit, profit);
       } else {
-        int cur = prices[r] - prices[l];
-        maxProfit = Math.max(cur,maxProfit);
+        l = r;
       }
       r++;
     }
