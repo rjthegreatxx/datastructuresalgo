@@ -10,11 +10,11 @@ class LongestSubstringWithoutRepeatingCharacters3 {
     if (s.length() <= 1) {return s.length();}
     int res = 0;
 
-    for(int i = 0;i<s.length() - 1;i++){
+    for (int l = 0; l < s.length() - 1; l++) {
       Set<String > charSet = new HashSet<>();
-      charSet.add(String.valueOf(s.charAt(i)));
+      charSet.add(String.valueOf(s.charAt(l)));
 
-      int r = i+1;
+      int r = l + 1;
       int len = 1;
       while(r<s.length()){
         if(!charSet.contains(String.valueOf(s.charAt(r)))){
