@@ -7,23 +7,27 @@ import java.util.Map;
 
 public class ValidParentheses202 {
     public boolean isValid(String s) {
-        if(s.isEmpty()) return false;
+        if (s.isEmpty())
+            return false;
 
         Map<Character, Character> charMap = new HashMap<>();
         charMap.put(']', '[');
         charMap.put('}', '{');
         charMap.put(')', '(');
 
-        ArrayList<Character> stack = new ArrayList<>();
+        Stack<Character> stack = new Stack<>();
 
         for (int i = 0; i < s.length(); i++) {
-            if (!stack.isEmpty() && charMap.containsKey(s.charAt(i))) {
-                if (charMap.get(s.charAt(i)) == s.charAt(i - 1)) {
-                    stack.remove(i-1);
+            char currentChar = s.charAt(i);
 
+            if (charMap.containsKey(currentChar)) {
+                // Check if the stack is empty or the top of the stack is not the matching
+                // opening bracket
+                if (stack.isEmpty() || stack.pop() != charMap.get(currentChar)) {
+                    return false;
                 }
             } else {
-                stack.add(s.charAt(i));
+                stack.push(currentChar);
             }
         }
 
