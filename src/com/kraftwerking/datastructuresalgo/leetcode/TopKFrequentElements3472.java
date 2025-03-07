@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-class TopKFrequentElements347 {
+class TopKFrequentElements3472 {
 
   public int[] topKFrequent(int[] nums, int k) {
     Map<Integer,Integer> countsMap = new HashMap<>();
@@ -29,8 +29,8 @@ class TopKFrequentElements347 {
 
   public static void main(String[] args) {
     int[] nums = {1,1,1,2,2,3};
-    TopKFrequentElements347 topKFrequentElements347 = new TopKFrequentElements347();
-    int[] result = topKFrequentElements347.topKFrequent(nums, 2);
+    TopKFrequentElements3472 TopKFrequentElements3472 = new TopKFrequentElements3472();
+    int[] result = TopKFrequentElements3472.topKFrequent(nums, 2);
     System.out.println(result);
   }
 }

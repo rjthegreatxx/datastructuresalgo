@@ -4,7 +4,7 @@ package com.kraftwerking.datastructuresalgo.leetcode;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-public class ImplementStackUsingQueues225 {
+public class ImplementStackUsingQueues2252 {
 
 }
 
