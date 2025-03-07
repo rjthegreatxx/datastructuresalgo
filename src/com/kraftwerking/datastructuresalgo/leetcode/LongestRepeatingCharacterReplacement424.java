@@ -1,23 +1,34 @@
 package com.kraftwerking.datastructuresalgo.leetcode;
 
-class LongestRepeatingCharacterReplacement424 {
+import java.util.HashSet;
 
+class LongestRepeatingCharacterReplacement424 {
   public int characterReplacement(String s, int k) {
-    int[] arr = new int[26];
-    int ans = 0;
-    int max = 0;
-    int i = 0;
-    for (int j = 0; j < s.length(); j++) {
-      arr[s.charAt(j) - 'A']++;
-      max = Math.max(max, arr[s.charAt(j) - 'A']);
-      if (j - i + 1 - max > k) {
-        arr[s.charAt(i) - 'A']--;
-        i++;
-      }
-      ans = Math.max(ans, j - i + 1);
+    int res = 0;
+    HashSet<Character> charSet = new HashSet<>();
+    for (char c : s.toCharArray()) {
+      charSet.add(c);
     }
-    return ans;
-  }
+
+        for (char c : charSet) {
+          int count = 0, l = 0;
+          for (int r = 0; r < s.length(); r++) {
+            if (s.charAt(r) == c) {
+              count++;
+            }
+
+                while ((r - l + 1) - count > k) {
+                  if (s.charAt(l) == c) {
+                    count--;
+                  }
+                    l++;
+                  }
+
+                  res = Math.max(res, r - l + 1);
+                }
+              }
+              return res;
+            }
 
   public static void main(String[] args) {
     LongestRepeatingCharacterReplacement424 longestRepeatingCharacterReplacement424 = new LongestRepeatingCharacterReplacement424();
