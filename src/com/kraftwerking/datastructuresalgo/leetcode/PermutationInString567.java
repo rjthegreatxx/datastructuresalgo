@@ -5,40 +5,36 @@ import java.util.HashMap;
 import java.util.Map;
 
 class PermutationInString567 {
+
   public boolean checkInclusion(String s1, String s2) {
-    boolean res = false;
-    Map<Character, Integer> charCountsOrig = new HashMap<>();
-
-    for(int i = 0;i<s1.length();i++){
-      charCountsOrig.put(s1.charAt(i), charCountsOrig.getOrDefault(s1.charAt(i), 0) + 1);
+    Map<Character, Integer> count1 = new HashMap<>();
+    for (char c : s1.toCharArray()) {
+      count1.put(c, count1.getOrDefault(c, 0) + 1);
     }
 
-    for(int l = 0;l<s2.length();l++){
-      Map<Character, Integer> charCounts= new HashMap<Character,Integer>(charCountsOrig);
-      if(!charCounts.containsKey(s2.charAt(l))) {
-        continue;
-      }
+    int need = count1.size();
+    for (int i = 0; i < s2.length(); i++) {
+      Map<Character, Integer> count2 = new HashMap<>();
+      int cur = 0;
+      for (int j = i; j < s2.length(); j++) {
+        char c = s2.charAt(j);
+        count2.put(c, count2.getOrDefault(c, 0) + 1);
 
-      int r = l;
-      while(r - l + 1 <= s1.length() &&  r < s2.length()){
-        if(!charCounts.containsKey(s2.charAt(r)) || charCounts.get(s2.charAt(r)) < 0) {
-          break;
-        }
-        if(charCounts.containsKey(s2.charAt(r))) {
-          charCounts.put(s2.charAt(r), charCounts.get(s2.charAt(r)) - 1);
-        }
-        r++;
-      }
+            if (count1.getOrDefault(c, 0) < count2.get(c)) {
+              break;
+            }
 
-      int charCountsSum = charCounts.values().stream().mapToInt(Integer::intValue).sum();
-      if(charCountsSum == 0) {
-        res = true;
-        break;
+            if (count1.getOrDefault(c, 0) == count2.get(c)) {
+              cur++;
+            }
+
+            if (cur == need) {
+              return true;
+            }
+          }
       }
+      return false;
     }
-
-    return res;
-  }
 
   public static void main(String[] args) {
     PermutationInString567 permutationInString567 = new PermutationInString567();
