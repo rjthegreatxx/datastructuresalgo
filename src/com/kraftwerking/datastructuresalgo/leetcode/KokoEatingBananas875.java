@@ -1,38 +1,29 @@
 package com.kraftwerking.datastructuresalgo.leetcode;
 
+import java.util.Arrays;
 
 public class KokoEatingBananas875 {
   public int minEatingSpeed(int[] piles, int h) {
-    // Initalize the left and right boundaries
-    int left = 1, right = 1;
-    for (int pile : piles) {
-      right = Math.max(right, pile);
-    }
+      int l = 1;
+      int r = Arrays.stream(piles).max().getAsInt();
+      int res = r;
 
-    while (left < right) {
-      // Get the middle index between left and right boundary indexes.
-      // hourSpent stands for the total hour Koko spends.
-      int middle = (left + right) / 2;
-      int hourSpent = 0;
+        while (l <= r) {
+          int k = (l + r) / 2;
 
-      // Iterate over the piles and calculate hourSpent.
-      // We increase the hourSpent by ceil(pile / middle)
-      for (int pile : piles) {
-        hourSpent += Math.ceil((double) pile / middle);
+            long totalTime = 0;
+            for (int p : piles) {
+              totalTime += Math.ceil((double) p / k);
+            }
+            if (totalTime <= h) {
+              res = k;
+              r = k - 1;
+            } else {
+              l = k + 1;
+            }
+          }
+        return res;
       }
-
-      // Check if middle is a workable speed, and cut the search space by half.
-      if (hourSpent <= h) {
-        right = middle;
-      } else {
-        left = middle + 1;
-      }
-    }
-
-    // Once the left and right boundaries coincide, we find the target value,
-    // that is, the minimum workable eating speed.
-    return right;
-  }
 
   public static void main(String[] args) {
     int[] piles  = {3,6,7,11};
