@@ -15,7 +15,7 @@ public class KokoEatingBananas875 {
             for (int p : piles) {
               totalTime += Math.ceil((double) p / k);
             }
-            if (totalTime <= h) {
+            if (totalTime <= h) { // binary search
               res = k;
               r = k - 1;
             } else {
